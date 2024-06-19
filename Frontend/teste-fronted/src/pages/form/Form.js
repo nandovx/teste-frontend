@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Form.css';
 import nitronewsIcon from '../../Utils/Icon/nitronews.svg';
 import axios from 'axios';
+import loadingGif from '../../Utils/gifs/output-onlinegiftools.gif'; // Import the loading GIF
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -19,6 +20,7 @@ const Form = () => {
   });
 
   const [successMessage, setSuccessMessage] = useState('');
+  const [loading, setLoading] = useState(false);  // State to manage loading indicator
 
   const unavailableEmails = ['teste@exemplo.com', 'joao@exemplo.com', 'maria@acme.net'];
 
@@ -87,6 +89,7 @@ const Form = () => {
     setErrors(newErrors);
 
     if (isValid) {
+      setLoading(true);  // Show loading indicator
       try {
         const response = await axios.post('http://localhost:8080', formData, {
           headers: {
@@ -99,6 +102,8 @@ const Form = () => {
         console.log(result);
       } catch (e) {
         console.log(e);
+      } finally {
+        setLoading(false);  // Hide loading indicator
       }
     } else {
       setSuccessMessage('');
@@ -159,7 +164,9 @@ const Form = () => {
           />
           <span className="error-message">{errors.confirmacaoSenha}</span>
         </div>
-        <button type="submit">CADASTRAR</button>
+        <button type="submit" className={loading ? 'button-loading' : ''} disabled={loading}>
+          {loading ? <img src={loadingGif} alt="Carregando..." className="loading-gif" /> : 'CADASTRAR'}
+        </button>
       </form>
       {successMessage && <div className="success-message">{successMessage}</div>}
     </div>
