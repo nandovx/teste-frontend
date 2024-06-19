@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+    <div class="container">
+        <img src="Utils/Icon/nitronews.svg" alt="NitroNews">
+        <h1>Comece agora</h1>
+        <p>Se cadastre rapidamente e comece hoje mesmo!</p>
+        <form id="registrationForm">
+            <div class="input-group">
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+                <span class="error-message" id="nameError"></span>
+            </div>
+            <div class="input-group">
+                <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+                <span class="error-message" id="emailError"></span>
+            </div>
+            <div class="input-group">
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+                <span class="error-message" id="passwordError"></span>
+            </div>
+            <div class="input-group">
+                <input type="password" id="confirmacaoSenha" name="confirmacaoSenha" placeholder="Confirme sua senha" required>
+                <span class="error-message" id="confirmPasswordError"></span>
+            </div>
+            <button type="submit">CADASTRAR</button>
+        </form>
+        <div class="success-message" id="successMessage"></div>
+    </div>
+    <script src="js/validation.js"></script>
+    <script src="js/conection.js"></script>
+</body>
+</html>
