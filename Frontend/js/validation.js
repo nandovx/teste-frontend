@@ -9,10 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const passwordError = document.getElementById('passwordError');
     const confirmPasswordError = document.getElementById('confirmPasswordError');
     const successMessage = document.getElementById('successMessage');
+    const submitButton = registrationForm.querySelector('button');
 
     const unavailableEmails = ['teste@exemplo.com', 'joao@exemplo.com', 'maria@acme.net'];
 
-    registrationForm.addEventListener('submit', (e) => {
+    registrationForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         let isValid = true;
@@ -71,8 +72,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (isValid) {
-            successMessage.textContent = 'Cadastro realizado com sucesso!';
-            successMessage.style.display = 'block';
+            // Desabilitar o botão e mostrar o GIF de carregamento
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<img src="Utils/Gif/output-onlinegiftools.gif" class="loading-gif" alt="Carregando...">';
+            
+            // Realizar a requisição à API
+            const success = await submitForm(nameInput.value, emailInput.value, passwordInput.value, confirmPasswordInput.value);
+            
+            // Restaurar o estado do botão
+            submitButton.disabled = false;
+            submitButton.innerHTML = 'CADASTRAR';
+            
+            if (success) {
+                successMessage.textContent = 'Cadastro realizado com sucesso!';
+                successMessage.style.display = 'block';
+            } else {
+                successMessage.style.display = 'none';
+            }
         } else {
             successMessage.style.display = 'none';
         }
