@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Form.css';
 import nitronewsIcon from '../../Utils/Icon/nitronews.svg';
 import axios from 'axios';
-import loadingGif from '../../Utils/gifs/output-onlinegiftools.gif'; // Import the loading GIF
+import loadingGif from '../../Utils/gifs/output-onlinegiftools.gif';
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -20,7 +20,7 @@ const Form = () => {
   });
 
   const [successMessage, setSuccessMessage] = useState('');
-  const [loading, setLoading] = useState(false);  // State to manage loading indicator
+  const [loading, setLoading] = useState(false); 
 
   const unavailableEmails = ['teste@exemplo.com', 'joao@exemplo.com', 'maria@acme.net'];
 
@@ -89,7 +89,7 @@ const Form = () => {
     setErrors(newErrors);
 
     if (isValid) {
-      setLoading(true);  // Show loading indicator
+      setLoading(true);
       try {
         const response = await axios.post('http://localhost:8080', formData, {
           headers: {
@@ -103,7 +103,7 @@ const Form = () => {
       } catch (e) {
         console.log(e);
       } finally {
-        setLoading(false);  // Hide loading indicator
+        setLoading(false); 
       }
     } else {
       setSuccessMessage('');

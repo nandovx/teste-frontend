@@ -10,7 +10,6 @@
 @font-face {
     font-family: 'SourceSans3';
     src: url('../../Utils/Font/SourceSans3-Bold.ttf') format('truetype');
-    /* O caminho '../Utils/Font/font-file.ttf' leva de CSS para a pasta Font */
 }
 
 
@@ -60,7 +59,7 @@ button {
     cursor: pointer;
     font-weight: bold;
     font-size: 15px;
-    position: relative; /* Add relative positioning */
+    position: relative; 
 }
 
 button:hover {
@@ -73,7 +72,7 @@ button:hover {
 }
 
 .button-loading:hover {
-    background-color: rgb(255, 102, 0); /* Ensure the hover effect doesn't change during loading */
+    background-color: rgb(255, 102, 0); 
     color: rgb(255, 255, 255);
 }
 
@@ -86,7 +85,6 @@ button:hover {
     transform: translate(-50%, -50%);
 }
 
-/* Ensure error messages are shown when there's content */
 .input-group .error-message {
     display: block;
 }
