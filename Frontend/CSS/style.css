@@ -20,7 +20,6 @@ body {
 @font-face {
     font-family: 'SourceSans3';
     src: url('../Utils/Font/SourceSans3-Bold.ttf') format('truetype');
-    /* O caminho '../Utils/Font/font-file.ttf' leva de CSS para a pasta Font */
 }
 
 h1 {
@@ -81,7 +80,7 @@ button:hover {
 }
 
 .button-loading:hover {
-    background-color: rgb(255, 102, 0); /* Maintain original background color during loading */
+    background-color: rgb(255, 102, 0);
 }
 
 .loading-gif {
